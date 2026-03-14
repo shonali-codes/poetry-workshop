@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Power of Poetry — Workshop by Sonali Dutta</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg-deep: #16121c;
+    --bg-card: #1e1a26;
+    --bg-card2: #221e2c;
+    --gold: #e4c068;
+    --gold-dim: #c9a84c;
+    --gold-faint: rgba(228,192,104,0.07);
+    --cream: #fcf7eb;
+    --cream-dim: #c8c0b2;
+    --teal: #5cb9aa;
+    --coral: #d6785f;
+    --lavender: #a88cc8;
+    --amber: #e6aa48;
+    --sage: #8cb982;
+    --rose: #c8788c;
+    --border: #35303f;
+    --border-gold: rgba(228,192,104,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ═══════════════ HERO ═══════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 40px 20px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 30%, rgba(214,120,95,0.09) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 60%, rgba(92,185,170,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 90%, rgba(168,140,200,0.06) 0%, transparent 45%);
+    pointer-events: none;
+  }
+
+  /* subtle grain */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+
+  .hero-ornament { margin-bottom: 24px; }
+  .hero-ornament svg { width: 160px; height: 20px; }
+
+  .hero-pretitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-bottom: 16px;
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 9vw, 88px);
+    font-weight: 900;
+    line-height: 1.02;
+    margin-bottom: 8px;
+    animation: fadeInUp 0.8s ease 0.1s both;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; font-weight: 700; }
+
+  .hero-subtitle {
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--teal);
+    font-style: italic;
+    margin: 16px 0 28px;
+    animation: fadeInUp 0.8s ease 0.2s both;
+  }
+
+  .hero-meta {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    color: var(--cream-dim);
+    margin-bottom: 36px;
+    letter-spacing: 1px;
+    animation: fadeInUp 0.8s ease 0.3s both;
+  }
+
+  .hero-ctas { animation: fadeInUp 0.8s ease 0.4s both; }
+
+  .cta-button {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--gold);
+    color: var(--bg-deep);
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .cta-button:hover {
+    background: var(--cream);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(228,192,104,0.25);
+  }
+  .cta-secondary {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    margin-left: 16px;
+  }
+  .cta-secondary:hover { background: var(--gold); color: var(--bg-deep); }
+
+  @media (max-width: 480px) {
+    .cta-secondary { margin-left: 0; margin-top: 12px; display: block; text-align: center; }
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 3px;
+    color: var(--cream-dim); opacity: 0.4; animation: bounce 2.5s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ═══════════════ TAGORE VERSE ═══════════════ */
+  .tagore-section {
+    position: relative;
+    padding: 90px 20px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .tagore-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(228,192,104,0.04) 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .tagore-border-top, .tagore-border-bottom {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  }
+
+  .tagore-inner {
+    max-width: 640px;
+    margin: 48px auto;
+    position: relative;
+  }
+
+  .tagore-open-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--gold);
+    opacity: 0.15;
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 24px;
+    user-select: none;
+  }
+
+  .tagore-lines {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+  }
+
+  .tagore-lines span {
+    display: block;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .tagore-lines span.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tagore-highlight {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .tagore-attribution {
+    margin-top: 32px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+  }
+
+  .tagore-attribution em {
+    color: var(--gold-dim);
+    font-style: normal;
+  }
+
+  /* ═══════════════ AUDIENCE SELECTOR ═══════════════ */
+  .audience-section {
+    padding: 80px 20px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .audience-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 12px;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-body {
+    font-size: 19px;
+    color: var(--cream-dim);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* Audience tabs */
+  .audience-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .audience-tab {
+    padding: 12px 28px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--cream-dim);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .audience-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .audience-tab:hover {
+    border-color: var(--border-gold);
+    color: var(--cream);
+  }
+
+  .audience-tab.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-faint);
+  }
+
+  .audience-tab.active::after { transform: scaleX(1); }
+
+  /* Audience panels */
+  .audience-panel {
+    display: none;
+    animation: fadeInUp 0.5s ease both;
+  }
+  .audience-panel.active { display: block; }
+
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 700px) { .panel-grid { grid-template-columns: 1fr; } }
+
+  .panel-card {
+    background: var(--bg-card);
+    padding: 32px;
+    border-top: 3px solid var(--gold);
+  }
+
+  .panel-card.teal-top { border-top-color: var(--teal); }
+  .panel-card.coral-top { border-top-color: var(--coral); }
+  .panel-card.lavender-top { border-top-color: var(--lavender); }
+
+  .panel-card-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 14px;
+  }
+
+  .panel-card.teal-top .panel-card-label { color: var(--teal); }
+  .panel-card.coral-top .panel-card-label { color: var(--coral); }
+
+  .panel-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--cream);
+  }
+
+  .benefit-list { list-style: none; }
+  .benefit-list li {
+    padding: 10px 0 10px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 16px;
+    color: var(--cream-dim);
+    position: relative;
+    line-height: 1.5;
+  }
+  .benefit-list li:last-child { border-bottom: none; }
+  .benefit-list li::before {
+    content: '◆';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-size: 8px;
+    top: 14px;
+  }
+
+  /* Recommended modules chips */
+  .modules-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .module-chip {
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--cream-dim);
+    background: rgba(255,255,255,0.03);
+    transition: all 0.2s;
+  }
+
+  .module-chip:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+  }
+
+  /* Pricing callout */
+  .panel-pricing {
+    background: linear-gradient(135deg, rgba(228,192,104,0.1), rgba(228,192,104,0.04));
+    border: 1px solid var(--border-gold);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .pricing-left { }
+
+  .pricing-tier-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .pricing-tier-desc {
+    font-size: 15px;
+    color: var(--cream-dim);
+    font-style: italic;
+  }
+
+  .pricing-amount-wrap { text-align: right; }
+
+  .pricing-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .pricing-original {
+    font-size: 16px;
+    color: var(--cream-dim);
+    text-decoration: line-through;
+    font-style: italic;
+  }
+
+  .pricing-eb {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-top: 4px;
+  }
+
+  .panel-cta-row {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .panel-cta-note {
+    font-size: 14px;
+    color: var(--cream-dim);
+    font-style: italic;
+  }
+
+  /* ═══════════════ DIVIDER ═══════════════ */
+  .ornament-divider {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .ornament-divider svg { width: 160px; height: 20px; }
+
+  /* ═══════════════ GENERAL SECTIONS ═══════════════ */
+  section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+
+  /* ═══════════════ MODULES ═══════════════ */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  @media (max-width: 700px) { .modules-grid { grid-template-columns: 1fr; } }
+
+  .module-card {
+    background: var(--bg-card);
+    padding: 28px;
+    border-left: 3px solid var(--gold);
+    transition: all 0.3s ease;
+  }
+  .module-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .module-card:nth-child(2)  { border-left-color: var(--coral); }
+  .module-card:nth-child(3)  { border-left-color: var(--teal); }
+  .module-card:nth-child(4)  { border-left-color: var(--lavender); }
+  .module-card:nth-child(5)  { border-left-color: var(--amber); }
+  .module-card:nth-child(6)  { border-left-color: var(--sage); }
+  .module-card:nth-child(7)  { border-left-color: var(--rose); }
+  .module-card:nth-child(8)  { border-left-color: var(--coral); }
+  .module-card:nth-child(9)  { border-left-color: var(--teal); }
+  .module-card:nth-child(10) { border-left-color: var(--lavender); }
+
+  .module-num { font-family:'Josefin Sans',sans-serif; font-size:12px; font-weight:500; color:var(--gold-dim); letter-spacing:2px; margin-bottom:6px; }
+  .module-title { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; margin-bottom:4px; color:var(--cream); }
+  .module-subtitle { font-size:14px; font-style:italic; color:var(--teal); margin-bottom:8px; }
+  .module-desc { font-size:14px; color:var(--cream-dim); line-height:1.6; }
+
+  /* ═══════════════ BENEFITS ═══════════════ */
+  .benefits-list { list-style:none; margin-top:30px; }
+  .benefits-list li {
+    padding:16px 0 16px 28px; border-bottom:1px solid rgba(201,168,76,0.1);
+    font-size:18px; color:var(--cream); position:relative;
+  }
+  .benefits-list li::before { content:'\2726'; position:absolute; left:0; color:var(--gold); font-size:14px; }
+
+  /* ═══════════════ FACILITATOR ═══════════════ */
+  .facilitator-highlights { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+  .highlight-tag {
+    padding:6px 16px; background:rgba(228,192,104,0.1); border:1px solid rgba(228,192,104,0.2);
+    font-family:'Josefin Sans',sans-serif; font-size:12px; letter-spacing:1px; color:var(--gold);
+  }
+
+  /* ═══════════════ FORMATS ═══════════════ */
+  .format-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px; margin-top:30px; }
+  .format-card { background:var(--bg-card); padding:28px; text-align:center; border-top:3px solid var(--gold); }
+  .format-name { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin-bottom:8px; }
+  .format-detail { font-size:15px; color:var(--cream-dim); line-height:1.6; }
+
+  /* ═══════════════ QUOTE (Carl Sandburg) ═══════════════ */
+  .quote-section { text-align:center; padding:80px 20px; position:relative; }
+  .quote-mark { font-family:'Playfair Display',serif; font-size:80px; color:var(--gold); opacity:0.3; line-height:0.5; }
+  .quote-text { font-family:'Playfair Display',serif; font-size:26px; font-style:italic; color:var(--cream); max-width:600px; margin:16px auto; line-height:1.5; }
+  .quote-author { font-family:'Josefin Sans',sans-serif; font-size:12px; letter-spacing:3px; color:var(--cream-dim); margin-top:16px; }
+
+  /* ═══════════════ FINAL CTA ═══════════════ */
+  .final-cta { text-align:center; padding:80px 20px 100px; }
+  .final-cta .section-heading { margin-bottom:16px; }
+  .final-cta .section-body { margin:0 auto 36px; text-align:center; }
+
+  /* ═══════════════ FOOTER ═══════════════ */
+  footer { text-align:center; padding:40px 20px; border-top:1px solid rgba(201,168,76,0.15); }
+  .footer-brand { font-family:'Playfair Display',serif; font-size:20px; color:var(--gold); margin-bottom:8px; }
+  .footer-handles { font-family:'Josefin Sans',sans-serif; font-size:13px; color:var(--cream-dim); letter-spacing:1px; }
+  .footer-tagline { font-size:15px; font-style:italic; color:var(--cream-dim); margin-top:16px; opacity:0.6; }
+
+  /* ═══════════════ ANIMATIONS ═══════════════ */
+  @keyframes fadeInUp {
+    from { opacity:0; transform:translateY(28px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-ornament">
+      <svg viewBox="0 0 160 20" fill="none">
+        <line x1="0" y1="10" x2="65" y2="10" stroke="#c9a84c" stroke-width="0.5"/>
+        <polygon points="80,4 86,10 80,16 74,10" fill="#e4c068"/>
+        <line x1="95" y1="10" x2="160" y2="10" stroke="#c9a84c" stroke-width="0.5"/>
+      </svg>
+    </div>
+    <div class="hero-pretitle">A 10-Module Transformative Workshop</div>
+    <h1 class="hero-title">The Power of <em>Poetry</em></h1>
+    <p class="hero-subtitle">Enrich your mind, soul &amp; creative expression through the world's oldest art form</p>
+    <p class="hero-meta">Designed &amp; Facilitated by <strong style="color:var(--cream)">Sonali Dutta</strong> &nbsp;|&nbsp; Sonali's Poetry Space</p>
+    <div class="hero-ctas">
+      <a href="https://forms.gle/Zqwoyai6jvJnNL5J9" class="cta-button">Register Now</a>
+      <a href="#find-your-path" class="cta-button cta-secondary">Find Your Path</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL TO EXPLORE ↓</div>
+</section>
+
+<!-- ═══ TAGORE VERSE ═══ -->
+<div class="tagore-section">
+  <div class="tagore-border-top"></div>
+  <div class="tagore-inner">
+    <span class="tagore-open-quote">&ldquo;</span>
+    <div class="tagore-lines" id="tagoreLines">
+      <span>Where the mind is without fear</span>
+      <span>and the head is held high,</span>
+      <span>Where <span class="tagore-highlight">knowledge is free</span>...</span>
+      <span>Where words come out from the depth of truth,</span>
+      <span>Where tireless striving stretches its arms towards perfection,</span>
+      <span>Where the <span class="tagore-highlight">clear stream of reason</span></span>
+      <span>has not lost its way</span>
+      <span>into the dreary desert sand of dead habit...</span>
+      <span style="margin-top:12px;font-size:0.85em;color:var(--cream-dim);">Into that heaven of freedom,</span>
+      <span style="font-size:0.85em;color:var(--gold);font-style:italic;">my Father, let my country awake.</span>
+    </div>
+    <div class="tagore-attribution" style="margin-top:32px;">
+      &mdash; <em>Rabindranath Tagore</em> &nbsp;·&nbsp; Gitanjali, 1912
+    </div>
+  </div>
+  <div class="tagore-border-bottom"></div>
+</div>
+
+<!-- ═══ AUDIENCE JOURNEY ═══ -->
+<div id="find-your-path" class="audience-section">
+  <div class="audience-header reveal">
+    <div class="section-label">Your Journey Begins Here</div>
+    <h2 class="section-heading">This workshop was made for <em style="color:var(--gold);font-style:italic;">you</em></h2>
+    <p class="section-body">Tell us who you are — and we'll show you exactly how poetry will transform your world.</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="audience-tabs reveal">
+    <button class="audience-tab active" onclick="showAudience('students')">Students &amp; Young Adults</button>
+    <button class="audience-tab" onclick="showAudience('professionals')">Working Professionals</button>
+    <button class="audience-tab" onclick="showAudience('homemakers')">Homemakers &amp; Retirees</button>
+    <button class="audience-tab" onclick="showAudience('patron')">Serious Poetry Lovers</button>
+    <button class="audience-tab" onclick="showAudience('corporate')">Corporate Teams</button>
+  </div>
+
+  <!-- ── STUDENTS ── -->
+  <div class="audience-panel active" id="panel-students">
+    <div class="panel-grid">
+      <div class="panel-card">
+        <div class="panel-card-label">Why Poetry?</div>
+        <div class="panel-card-title">Build the mind that stands out</div>
+        <ul class="benefit-list">
+          <li>Sharpen critical thinking &amp; analytical reading for exams, essays &amp; beyond</li>
+          <li>Build eloquence &amp; confident self-expression — in interviews, debates, presentations</li>
+          <li>Develop cultural empathy through multilingual literature</li>
+          <li>Discover your creative voice through original poetry writing</li>
+          <li>Stand apart with a certificate that signals depth of thought</li>
+        </ul>
+      </div>
+      <div class="panel-card teal-top">
+        <div class="panel-card-label" style="color:var(--teal);">Recommended Modules</div>
+        <div class="panel-card-title">Start your journey here</div>
+        <div class="modules-chips">
+          <div class="module-chip">01 · Analysing Classical &amp; Modern Poetry</div>
+          <div class="module-chip">03 · Poetry Debates &amp; Discussions</div>
+          <div class="module-chip">05 · History of Poems &amp; Poets</div>
+          <div class="module-chip">06 · Writing Original Poetry</div>
+          <div class="module-chip">10 · Fuelling Creative Thinking</div>
+          <div class="module-chip">02 · Reading Multilingual Poetry</div>
+        </div>
+        <p style="font-size:14px;color:var(--cream-dim);font-style:italic;margin-top:16px;">All 10 modules available — the above are especially impactful for students</p>
+      </div>
+    </div>
+    <div class="panel-pricing">
+      <div class="pricing-left">
+        <div class="pricing-tier-name">Curious Soul</div>
+        <div class="pricing-tier-desc">Designed for students &amp; young adults · Full 10-module access</div>
+      </div>
+      <div class="pricing-amount-wrap">
+        <div class="pricing-amount">₹1,500</div>
+        <div class="pricing-original">Regular ₹2,000</div>
+        <div class="pricing-eb">★ Early bird price — save ₹500</div>
+      </div>
+    </div>
+    <div class="panel-cta-row">
+      <a href="https://forms.gle/Zqwoyai6jvJnNL5J9" class="cta-button">Register as Curious Soul</a>
+      <a href="power-of-poetry-pricing.html" class="cta-button cta-secondary">See All Tiers</a>
+      <span class="panel-cta-note">Includes certificate · 1 poem feedback · Community access</span>
+    </div>
+  </div>
+
+  <!-- ── PROFESSIONALS ── -->
+  <div class="audience-panel" id="panel-professionals">
+    <div class="panel-grid">
+      <div class="panel-card">
+        <div class="panel-card-label">Why Poetry?</div>
+        <div class="panel-card-title">The thinking edge your career needs</div>
+        <ul class="benefit-list">
+          <li>Develop lateral thinking &amp; creative problem-solving for complex challenges</li>
+          <li>Articulate ideas with precision, nuance, and persuasive power</li>
+          <li>Build emotional intelligence through deep literary empathy</li>
+          <li>Find mindfulness &amp; restoration from the demands of professional life</li>
+          <li>Get guidance on self-publishing your own writing</li>
+        </ul>
+      </div>
+      <div class="panel-card teal-top">
+        <div class="panel-card-label" style="color:var(--teal);">Recommended Modules</div>
+        <div class="panel-card-title">Most relevant for your world</div>
+        <div class="modules-chips">
+          <div class="module-chip">10 · Fuelling Innovation &amp; Creative Thinking</div>
+          <div class="module-chip">08 · Poetry as Mindful Practice</div>
+          <div class="module-chip">06 · Writing Original Poetry</div>
+          <div class="module-chip">03 · Poetry Debates &amp; Discussions</div>
+          <div class="module-chip">09 · Bridging Cultures &amp; Generations</div>
+          <div class="module-chip">01 · Analysing Classical &amp; Modern Poetry</div>
+        </div>
+        <p style="font-size:14px;color:var(--cream-dim);font-style:italic;margin-top:16px;">All 10 modules available in the weekly series — one per week, fits your schedule</p>
+      </div>
+    </div>
+    <div class="panel-pricing">
+      <div class="pricing-left">
+        <div class="pricing-tier-name">The Practitioner</div>
+        <div class="pricing-tier-desc">For working professionals · Full access + self-publishing guidance</div>
+      </div>
+      <div class="pricing-amount-wrap">
+        <div class="pricing-amount">₹3,000</div>
+        <div class="pricing-original">Regular ₹3,500</div>
+        <div class="pricing-eb">★ Early bird price — save ₹500</div>
+      </div>
+    </div>
+    <div class="panel-cta-row">
+      <a href="https://forms.gle/Zqwoyai6jvJnNL5J9" class="cta-button">Register as Practitioner</a>
+      <a href="power-of-poetry-pricing.html" class="cta-button cta-secondary">See All Tiers</a>
+      <span class="panel-cta-note">3 poem feedbacks · Self-publishing guidance · Resource pack</span>
+    </div>
+  </div>
+
+  <!-- ── HOMEMAKERS & RETIREES ── -->
+  <div class="audience-panel" id="panel-homemakers">
+    <div class="panel-grid">
+      <div class="panel-card">
+        <div class="panel-card-label">Why Poetry?</div>
+        <div class="panel-card-title">A space entirely your own</div>
+        <ul class="benefit-list">
+          <li>Reconnect with the languages and poetry of your roots — Bengali, Hindi, Urdu &amp; more</li>
+          <li>Express decades of lived wisdom through original writing</li>
+          <li>Find mindfulness, peace &amp; creative nourishment</li>
+          <li>Connect with a warm, like-minded community across ages</li>
+          <li>Leave a legacy — a collection of your own poems, with expert feedback</li>
+        </ul>
+      </div>
+      <div class="panel-card teal-top">
+        <div class="panel-card-label" style="color:var(--teal);">Recommended Modules</div>
+        <div class="panel-card-title">Where your journey unfolds</div>
+        <div class="modules-chips">
+          <div class="module-chip">08 · Poetry as Mindful Practice</div>
+          <div class="module-chip">02 · Reading Multilingual Poetry</div>
+          <div class="module-chip">06 · Writing Original Poetry</div>
+          <div class="module-chip">04 · Learning About Poets &amp; Their Lives</div>
+          <div class="module-chip">09 · Bridging Cultures &amp; Generations</div>
+          <div class="module-chip">07 · Encapsulating History in Verse</div>
+        </div>
+        <p style="font-size:14px;color:var(--cream-dim);font-style:italic;margin-top:16px;">No prior experience needed — this workshop warmly welcomes all levels</p>
+      </div>
+    </div>
+    <div class="panel-pricing">
+      <div class="pricing-left">
+        <div class="pricing-tier-name">Curious Soul</div>
+        <div class="pricing-tier-desc">Accessible for everyone · Full 10-module experience</div>
+      </div>
+      <div class="pricing-amount-wrap">
+        <div class="pricing-amount">₹1,500</div>
+        <div class="pricing-original">Regular ₹2,000</div>
+        <div class="pricing-eb">★ Early bird price — save ₹500</div>
+      </div>
+    </div>
+    <div class="panel-cta-row">
+      <a href="https://forms.gle/Zqwoyai6jvJnNL5J9" class="cta-button">Begin Your Journey</a>
+      <a href="power-of-poetry-pricing.html" class="cta-button cta-secondary">See All Tiers</a>
+      <span class="panel-cta-note">Online or in-person (Kolkata) · All experience levels welcome</span>
+    </div>
+  </div>
+
+  <!-- ── CORPORATE ── -->
+  <div class="audience-panel" id="panel-corporate">
+    <div class="panel-grid">
+      <div class="panel-card">
+        <div class="panel-card-label">Why Poetry for Teams?</div>
+        <div class="panel-card-title">Where creativity meets performance</div>
+        <ul class="benefit-list">
+          <li>Unlock lateral thinking &amp; innovation across your team</li>
+          <li>Strengthen communication, storytelling &amp; presentation skills</li>
+          <li>Build cultural empathy &amp; inclusion across diverse teams</li>
+          <li>Unique, memorable team-building that goes beyond the usual</li>
+          <li>Post-workshop report for HR and management</li>
+        </ul>
+      </div>
+      <div class="panel-card coral-top">
+        <div class="panel-card-label">Recommended Modules</div>
+        <div class="panel-card-title">Curated for organisational impact</div>
+        <div class="modules-chips">
+          <div class="module-chip">10 · Fuelling Innovation &amp; Creative Thinking</div>
+          <div class="module-chip">03 · Poetry Debates &amp; Discussions</div>
+          <div class="module-chip">09 · Bridging Cultures &amp; Generations</div>
+          <div class="module-chip">06 · Writing Original Poetry</div>
+          <div class="module-chip">08 · Poetry as Mindful Practice</div>
+          <div class="module-chip">01 · Analysing Classical &amp; Modern Poetry</div>
+        </div>
+        <p style="font-size:14px;color:var(--cream-dim);font-style:italic;margin-top:16px;">Custom module selection available · Schedule built around your team's calendar</p>
+      </div>
+    </div>
+    <div class="panel-pricing" style="border-color:rgba(92,185,170,0.3);background:linear-gradient(135deg,rgba(92,185,170,0.08),rgba(92,185,170,0.03));">
+      <div class="pricing-left">
+        <div class="pricing-tier-name" style="color:var(--teal);">Corporate / Institution</div>
+        <div class="pricing-tier-desc">Custom pricing · Minimum 3 participants · Flexible format</div>
+      </div>
+      <div class="pricing-amount-wrap">
+        <div class="pricing-amount" style="color:var(--teal);">Customizable</div>
+        <div class="pricing-original">Per participant</div>
+        <div class="pricing-eb" style="color:var(--gold);">Group certificate · HR report included</div>
+      </div>
+    </div>
+    <div class="panel-cta-row">
+      <a href="https://forms.gle/Zqwoyai6jvJnNL5J9" class="cta-button">Enquire for Your Team</a>
+      <a href="power-of-poetry-pricing.html" class="cta-button cta-secondary">See Full Pricing</a>
+      <span class="panel-cta-note">Write to us on Instagram @sonaliduttainsta for a custom quote</span>
+    </div>
+  </div>
+
+  <!-- ── SERIOUS POETRY LOVERS / PATRON ── -->
+  <div class="audience-panel" id="panel-patron">
+    <div class="panel-grid">
+      <div class="panel-card" style="border-top-color:var(--lavender);">
+        <div class="panel-card-label" style="color:var(--lavender);">Why This Workshop?</div>
+        <div class="panel-card-title">A home for the poet you already are</div>
+        <ul class="benefit-list">
+          <li>Engage in deep literary analysis across classical, modern and multilingual traditions</li>
+          <li>Receive expert feedback on up to 3 original poems from a published poet</li>
+          <li>Get practical guidance on self-publishing — from manuscript to print</li>
+          <li>Find your tribe — a cohort of equally serious, sensitive, literary minds</li>
+          <li>Explore poetry as philosophical and contemplative practice, not just craft</li>
+          <li>Be the first invited to future Poetry Spaces collaborations &amp; events</li>
+        </ul>
+      </div>
+      <div class="panel-card teal-top">
+        <div class="panel-card-label" style="color:var(--teal);">Recommended Modules</div>
+        <div class="panel-card-title">The full depth of the experience</div>
+        <div class="modules-chips">
+          <div class="module-chip">01 · Analysing Classical &amp; Modern Poetry</div>
+          <div class="module-chip">02 · Reading Multilingual Poetry</div>
+          <div class="module-chip">05 · History of Poems &amp; Poets</div>
+          <div class="module-chip">06 · Writing Original Poetry</div>
+          <div class="module-chip">07 · Encapsulating History in Verse</div>
+          <div class="module-chip">08 · Poetry as Mindful Practice</div>
+          <div class="module-chip">04 · Learning About Poets &amp; Their Lives</div>
+          <div class="module-chip">03 · Poetry Debates &amp; Discussions</div>
+        </div>
+        <p style="font-size:14px;color:var(--cream-dim);font-style:italic;margin-top:16px;">All 10 modules — serious practitioners will find depth and value in every single one</p>
+      </div>
+    </div>
+    <div class="panel-pricing" style="border-color:rgba(168,140,200,0.35);background:linear-gradient(135deg,rgba(168,140,200,0.08),rgba(168,140,200,0.03));">
+      <div class="pricing-left">
+        <div class="pricing-tier-name" style="color:var(--lavender);">The Patron</div>
+        <div class="pricing-tier-desc">For those who pursue poetry seriously · Includes scholarship contribution</div>
+      </div>
+      <div class="pricing-amount-wrap">
+        <div class="pricing-amount" style="color:var(--lavender);">₹4,500</div>
+        <div class="pricing-original">Regular ₹5,000</div>
+        <div class="pricing-eb">★ Early bird · ~₹1,500 of this funds a scholarship seat</div>
+      </div>
+    </div>
+    <div class="panel-cta-row">
+      <a href="https://forms.gle/Zqwoyai6jvJnNL5J9" class="cta-button" style="background:var(--lavender);color:var(--bg-deep);">Register as The Patron</a>
+      <a href="power-of-poetry-pricing.html" class="cta-button cta-secondary">See All Tiers</a>
+      <span class="panel-cta-note">3 poem feedbacks · Self-publishing guidance · 1:1 with Sonali · Pay-it-Forward scholarship</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ ORNAMENT DIVIDER ═══ -->
+<div class="ornament-divider">
+  <svg viewBox="0 0 160 20" fill="none">
+    <line x1="0" y1="10" x2="65" y2="10" stroke="#c9a84c" stroke-width="0.5"/>
+    <polygon points="80,4 86,10 80,16 74,10" fill="#e4c068"/>
+    <line x1="95" y1="10" x2="160" y2="10" stroke="#c9a84c" stroke-width="0.5"/>
+  </svg>
+</div>
+
+<!-- ═══ WHAT YOU'LL GAIN ═══ -->
+<section class="reveal">
+  <div class="section-label">What You'll Gain</div>
+  <h2 class="section-heading">10 modules. <br>Infinite possibilities.</h2>
+  <ul class="benefits-list">
+    <li>Critical thinking and deep analytical reading skills</li>
+    <li>Confidence in public speaking, debate, and articulate expression</li>
+    <li>Cultural empathy through multilingual literary exploration</li>
+    <li>A personal collection of original poems with expert feedback</li>
+    <li>Historical literacy — poetry as civilisational memory</li>
+    <li>Mindfulness techniques rooted in contemplative practice</li>
+    <li>A creative thinking toolkit for any professional context</li>
+    <li>Connection to a vibrant poetry-loving community</li>
+  </ul>
+</section>
+
+<!-- ═══ MODULES ═══ -->
+<section id="modules" class="reveal">
+  <div class="section-label">The Curriculum</div>
+  <h2 class="section-heading">10 Modules. One Transformative Journey.</h2>
+  <p class="section-body">Each module combines knowledge with hands-on practice. Together, they form a complete immersion in the world of poetry.</p>
+  <div class="modules-grid">
+    <div class="module-card"><div class="module-num">MODULE 01</div><div class="module-title">Analysing Classical &amp; Modern Poetry</div><div class="module-subtitle">The Art of Deep Reading</div><div class="module-desc">Sharpen critical thinking through close reading of verse across eras — learning to unravel metaphor, rhythm, and layered meaning.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 02</div><div class="module-title">Reading Multilingual Poetry</div><div class="module-subtitle">Voices Across Languages</div><div class="module-desc">Expand cultural empathy by experiencing verse in Bengali, Hindi, Urdu, Tamil, English, and more.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 03</div><div class="module-title">Poetry Debates &amp; Discussions</div><div class="module-subtitle">The Kavya Sabha Tradition</div><div class="module-desc">Build eloquence and confidence through structured poetry debates and spontaneous commentary.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 04</div><div class="module-title">Learning About Poets &amp; Their Lives</div><div class="module-subtitle">The Human Behind the Verse</div><div class="module-desc">Discover how biography, exile, grief, and longing shaped the world's greatest poets.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 05</div><div class="module-title">History of Poems &amp; Poets</div><div class="module-subtitle">Poetry as Civilisational Memory</div><div class="module-desc">Journey from the Rig Veda through Persian ghazals, Bengali renaissance poetry, to spoken word.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 06</div><div class="module-title">Writing Original Poetry</div><div class="module-subtitle">Finding Your Voice</div><div class="module-desc">Unlock self-expression through guided writing in multiple forms — haiku, ghazal, free verse.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 07</div><div class="module-title">Encapsulating History in Verse</div><div class="module-subtitle">The Poet as Witness</div><div class="module-desc">Explore how poetry preserves emotional truths that textbooks and data cannot capture.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 08</div><div class="module-title">Poetry as Mindful Practice</div><div class="module-subtitle">Presence Through Language</div><div class="module-desc">Cultivate presence and deep listening through the meditative dimensions of poetry.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 09</div><div class="module-title">Bridging Cultures &amp; Generations</div><div class="module-subtitle">Poetry as Living Connection</div><div class="module-desc">Experience poetry as a bridge connecting people, cultures, languages, and eras.</div></div>
+    <div class="module-card"><div class="module-num">MODULE 10</div><div class="module-title">Fuelling Innovation &amp; Creative Thinking</div><div class="module-subtitle">Poetry as a Cognitive Superpower</div><div class="module-desc">Discover how poetic thinking drives lateral innovation in any field.</div></div>
+  </div>
+</section>
+
+<!-- ═══ QUOTE ═══ -->
+<div class="quote-section reveal">
+  <div class="quote-mark">&ldquo;</div>
+  <p class="quote-text">Poetry is the journal of a sea animal living on land, wanting to fly in the air.</p>
+  <div class="quote-author">&mdash; CARL SANDBURG</div>
+</div>
+
+<!-- ═══ FORMATS ═══ -->
+<section class="reveal">
+  <div class="section-label">Flexible Formats</div>
+  <h2 class="section-heading">Choose what works for you.</h2>
+  <div class="format-cards">
+    <div class="format-card">
+      <div class="format-name">Weekend Intensive</div>
+      <div class="format-detail">2 full days<br>5 modules per day<br>Immersive &amp; deep</div>
+    </div>
+    <div class="format-card" style="border-top-color:var(--teal)">
+      <div class="format-name">Weekly Series</div>
+      <div class="format-detail">10 weeks<br>1 module per week<br>For working professionals</div>
+    </div>
+    <div class="format-card" style="border-top-color:var(--coral)">
+      <div class="format-name">Monthly Cohort</div>
+      <div class="format-detail">5 weeks<br>2 modules per week<br>Structured &amp; social</div>
+    </div>
+    <div class="format-card" style="border-top-color:var(--lavender)">
+      <div class="format-name">Corporate / Custom</div>
+      <div class="format-detail">Customisable<br>Selected modules<br>For teams &amp; institutions</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FACILITATOR ═══ -->
+<section class="reveal">
+  <div class="section-label">Your Facilitator</div>
+  <h2 class="section-heading">Sonali Dutta</h2>
+  <p class="section-body">Poet. Singer. Technologist. Cultural Curator. With 25+ years of writing poetry, a published collection, 50+ literary events hosted, and a unique blend of classical training (Rabindra Sangeet, Nishtha 2025) with technology expertise, Sonali brings an unparalleled perspective to the workshop space.</p>
+  <p class="section-body" style="margin-top:16px;">As the founder of <strong style="color:var(--gold)">Sonali's Poetry Space</strong> and the <strong style="color:var(--gold)">BhashaSetu</strong> multilingual storytelling initiative, she has built a community that bridges tradition and innovation, language and meaning, art and life.</p>
+  <div class="facilitator-highlights" style="margin-top:24px;">
+    <span class="highlight-tag">Published Poet</span>
+    <span class="highlight-tag">Nishtha 2025 Singer</span>
+    <span class="highlight-tag">50+ Literary Events</span>
+    <span class="highlight-tag">BhashaSetu Founder</span>
+    <span class="highlight-tag">5 YouTube Channels</span>
+    <span class="highlight-tag">13+ Years in Tech</span>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="final-cta reveal" id="register">
+  <div class="section-label">Begin Your Journey</div>
+  <h2 class="section-heading">Ready to discover the <br>power of poetry?</h2>
+  <p class="section-body">Seats are limited to ensure personalised attention. Register now or reach out to discuss custom formats for your team or institution.</p>
+  <a href="https://forms.gle/Zqwoyai6jvJnNL5J9" class="cta-button">Register Now</a>
+  &nbsp;&nbsp;
+  <a href="power-of-poetry-pricing.html" class="cta-button cta-secondary">View Pricing</a>
+  <br><br>
+  <p class="hero-meta" style="margin-top:20px;">
+    Twitter/X: <strong style="color:var(--gold)">@SonaliDutta11</strong> &nbsp;|&nbsp;
+    Instagram: <strong style="color:var(--gold)">@sonaliduttainsta</strong>
+  </p>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-brand">Sonali's Poetry Space</div>
+  <div class="footer-handles">@SonaliDutta11 &nbsp;&middot;&nbsp; @sonaliduttainsta</div>
+  <div class="footer-tagline">Every poem remembered is a world kept alive.</div>
+</footer>
+
+<script>
+// ── Audience tab switcher ──────────────────────────────────────
+function showAudience(id) {
+  document.querySelectorAll('.audience-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.audience-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── Tagore verse line-by-line reveal ─────────────────────────
+function revealTagoreLines() {
+  const lines = document.querySelectorAll('#tagoreLines span');
+  lines.forEach((line, i) => {
+    setTimeout(() => line.classList.add('visible'), i * 180);
+  });
+}
+
+// ── Scroll reveal ─────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Tagore reveal when section enters view
+const tagoreObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) {
+    revealTagoreLines();
+    tagoreObserver.disconnect();
+  }
+}, { threshold: 0.3 });
+tagoreObserver.observe(document.querySelector('.tagore-section'));
+</script>
+
+</body>
+</html>
